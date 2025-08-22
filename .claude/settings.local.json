@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__mcp-atlassian__jira_search",
+      "Bash(npm init -y)",
+      "Bash(npm install express axios dotenv cors express-rate-limit)",
+      "Bash(node \"/Users/cm0661/Desktop/JIRA html/server.js\")",
+      "Bash(PORT=3000 node \"/Users/cm0661/Desktop/JIRA html/server.js\")",
+      "Bash(curl -s -i http://localhost:3000/api/issues)",
+      "Bash(curl -s http://localhost:3000/index.html)",
+      "Bash(/usr/bin/env bash -lc \"lsof -nP -iTCP:3000 -sTCP:LISTEN -t | xargs -r kill -TERM; sleep 1; PORT=3000 node ''/Users/cm0661/Desktop/JIRA html/server.js''\")",
+      "Bash(curl -s -i http://localhost:3000/index.html)",
+      "Bash(curl -s -i http://localhost:3000/)",
+      "mcp__mcp-atlassian__jira_search_fields",
+      "mcp__mcp-atlassian__jira_get_issue"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
