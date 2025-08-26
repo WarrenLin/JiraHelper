@@ -11,8 +11,8 @@ This is a web-based Jira issue tracker. It provides a user-friendly interface to
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository-url>
-    cd JIRA-Helper
+    git clone https://github.com/WarrenLin/JiraHelper.git
+    cd JiraHelper
     ```
 
 2.  **Create a `.env` file** in the root of the project with the following content, replacing the placeholder values with your actual Jira credentials:
