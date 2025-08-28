@@ -38,6 +38,7 @@
     <button id="apply">套用</button>
     <input id="search" placeholder="搜尋關鍵字或單號">
     <select id="status"><option value="">全部狀態</option><option>To Do</option><option>In Progress</option><option>等候驗收</option><option>Done</option></select>
+    <select id="type"><option value="">全部類型</option><option>Task</option><option>Stage-bug</option><option>Bug</option><option>Sub-task</option></select>
     <select id="assignee"><option value="">全部指派</option></select>
     <button id="export">匯出 CSV</button>
     <span id="loader" style="display: none;">讀取中...</span>
@@ -67,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const applyBtn = document.getElementById('apply');
   const searchInput = document.getElementById('search');
   const statusSelect = document.getElementById('status');
+  const typeSelect = document.getElementById('type');
   const assigneeSelect = document.getElementById('assignee');
   const exportBtn = document.getElementById('export');
   const totalEl = document.getElementById('total');
@@ -262,14 +264,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const filterIssues = () => {
       const searchTerm = searchInput.value.toLowerCase();
       const selectedStatus = statusSelect.value;
+      const selectedType = typeSelect.value;
       const selectedAssignee = assigneeSelect.value;
 
       const filtered = allIssues.filter(issue => {
           const summaryMatch = issue.summary?.toLowerCase().includes(searchTerm);
           const keyMatch = issue.key?.toLowerCase().includes(searchTerm);
           const statusMatch = !selectedStatus || issue.status?.name === selectedStatus;
+          const typeMatch = !selectedType || issue.issue_type?.name === selectedType;
           const assigneeMatch = !selectedAssignee || issue.assignee?.display_name === selectedAssignee;
-          return (summaryMatch || keyMatch) && statusMatch && assigneeMatch;
+          return (summaryMatch || keyMatch) && statusMatch && typeMatch && assigneeMatch;
       });
       // When filtering, we re-render the table which will also add the summary row for the filtered data
       renderIssues(filtered);
@@ -306,6 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
   applyBtn.addEventListener('click', fetchIssues);
   searchInput.addEventListener('input', filterIssues);
   statusSelect.addEventListener('change', filterIssues);
+  typeSelect.addEventListener('change', filterIssues);
   assigneeSelect.addEventListener('change', filterIssues);
   exportBtn.addEventListener('click', exportToCSV);
 
