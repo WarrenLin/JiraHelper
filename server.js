@@ -117,7 +117,7 @@ app.get('/api/issues', async (req, res) => {
 
     sprintIdUsed = latestSprintId;
     console.log(`No JQL provided, using latest active sprint: ${sprintIdUsed}`);
-    jql = `component = Android_RD and project = HRTX and sprint = ${sprintIdUsed} and type IN (Stage-bug, Bug, Sub-task) and status IN ("To Do", "In Progress", Done, 等候驗收) ORDER BY status DESC, originalEstimate ASC`;
+    jql = `component = Android_RD and project = HRTX and sprint = ${sprintIdUsed} and type IN (Task, Stage-bug, Bug, Sub-task) and status IN ("To Do", "In Progress", Done, 等候驗收) ORDER BY status DESC, originalEstimate ASC`;
   } else {
     const match = jql.match(/sprint = (\d+)/);
     if (match) {

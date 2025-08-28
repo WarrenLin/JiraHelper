@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const componentsQuery = components.split(',').map(c => `"${c.trim()}"`).join(',');
         jqlParts.push(`component IN (${componentsQuery})`);
     }
-    jqlParts.push('type IN (Stage-bug, Bug, Sub-task)');
+    jqlParts.push('type IN (Task, Stage-bug, Bug, Sub-task)');
     
     const jql = jqlParts.join(' AND ') + ' ORDER BY status DESC, originalEstimate ASC';
 
